@@ -1,0 +1,28 @@
+Table proveedor {
+  id_proveedor integer [primary key]
+  nombre varchar
+  dirrecion varchar
+  ciudad varchar
+  provincia varchar 
+}
+Table proveedor_piezas {
+  id_proveedor_piezas integer PK [ref: <> proveedor.id_proveedor, ref: <> pieza.id_pieza] 
+  id_pieza integer [ref: <> pieza.id_pieza]
+  id_proveedor integer [ref: <> proveedor.id_proveedor]
+  nombre_pieza varchar [ref: - pieza.nombre_pieza]
+  cantidad_ingresada integer
+  fecha_de_ingreso timestamp
+}
+Table pieza {
+  id_pieza integer [primary key]
+  nombre_pieza varchar
+  categoria varchar [ref: - categoria.nombre_categoria]
+  color varchar
+  cantidad integer
+  precio money
+}
+
+Table categoria {
+  id_categoria serial 
+  nombre_categoria varchar [primary key]
+}
